@@ -22,7 +22,7 @@ const app = new Vue({
             })
         },
         addProduct(product) {
-            this.getJson(`${API}/addToBascet.json`)
+            this.getJson(`${API}/addToBasket.json`)
                 .then(data => {
                     if (data.result === 1) {
                         let find = this.cartItems.find(el => el.id_product === product.id_product);
@@ -38,13 +38,13 @@ const app = new Vue({
             })
         },
         remove(item) {
-            thes.getJson(`${API}/deleteFromBasket.json`)
+            this.getJson(`${API}/deleteFromBasket.json`)
                 .then(data => {
                     if (data.result === 1) {
                         if (item.quantity > 1) {
                             item.quantity--;
                         } else {
-                            this.cartItems.splice(this.cartItems.tndexOff(item), 1)
+                            this.cartItems.splice(this.cartItems.indexOf(item), 1)
                         }
                     }
             })
